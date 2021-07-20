@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class Maps {
+public class Map {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

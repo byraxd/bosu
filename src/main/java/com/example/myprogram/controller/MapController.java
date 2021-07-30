@@ -16,7 +16,7 @@ public class MapController {
 
     @GetMapping("/all")
     public List<Map> findAll() {
-        return mapService.findAll();
+        return mapService.getAll();
     }
 
     @PostMapping("/add")
@@ -24,9 +24,9 @@ public class MapController {
         return mapService.addMap(mapDto);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/editMap/{id}")
     public Map editMap(@PathVariable("id") Long id, @RequestBody MapDto mapDto) {
-        return mapService.editMap(id, mapDto);
+        return mapService.updateMap(id, mapDto);
     }
 
     @GetMapping("/getById/{id}")
@@ -39,8 +39,8 @@ public class MapController {
         mapService.deleteById(id);
     }
 
-    @GetMapping("/getSortedByStar")
+    @GetMapping("/getSortedMapList")
     public List<Map> findByOrderByStarRateAsc() {
-        return mapService.findByOrderByStarRateAsc();
+        return mapService.getByOrderByStarRateAsc();
     }
 }

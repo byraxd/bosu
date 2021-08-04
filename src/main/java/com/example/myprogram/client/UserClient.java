@@ -15,7 +15,7 @@ public class UserClient {
     @Autowired
     private RestTemplate restTemplate;
     private final String URL_OSU = "https://osu.ppy.sh/api/get_user";
-    private final String URL_OSU_IMG = "http://s.ppy.sh/a/user_id";
+    private static final String URL_OSU_IMG = "http://s.ppy.sh/a/user_id";
     private static final String API_KEY = "2f76d6431424b6ad60a890da9e135e7e1d34d387";
 
     public ResponseEntity<UserDto[]> getOsuUser(String username) {
@@ -30,7 +30,7 @@ public class UserClient {
                 entity,
                 UserDto[].class);
     }
-    public String getUserImage(Integer user_id) {
+    public String getUserImage(Long user_id) {
         return restTemplate.getForObject(URL_OSU_IMG + "/" + user_id, String.class);
     }
 }

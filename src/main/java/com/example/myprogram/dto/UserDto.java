@@ -1,19 +1,13 @@
 package com.example.myprogram.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Data
 public class UserDto {
 
-    private Integer user_id;
+    private Long user_id;
 
     private String username;
 

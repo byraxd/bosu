@@ -1,12 +1,15 @@
-package com.example.myprogram.dto;
+package com.example.myprogram.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.List;
-
-@Data
-public class UserDto {
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Getter
+@Setter
+@Entity
+public class User {
+    @Id
     private Long user_id;
 
     private String username;
@@ -49,15 +52,5 @@ public class UserDto {
 
     private Integer pp_country_rank;
 
-    private List<Event> events;
-
     private String imgUrl;
-    @Data
-    public static class Event {
-        private String display_html;
-        private Integer beatmap_id;
-        private Integer beatmapset_id;
-        private String date;
-        private Integer epicfactor;
-    }
 }

@@ -1,6 +1,5 @@
 package com.example.myprogram.repo;
 
-import com.example.myprogram.entity.Map;
 import com.example.myprogram.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

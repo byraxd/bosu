@@ -3,10 +3,8 @@ package com.example.myprogram.Service;
 import com.example.myprogram.client.UserClient;
 import com.example.myprogram.component.UserMapper;
 import com.example.myprogram.dto.UserDto;
-import com.example.myprogram.entity.Map;
 import com.example.myprogram.entity.User;
 import com.example.myprogram.repo.UserRepo;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +21,23 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public List<UserDto> getUserByUsername(String username){
+    public List<UserDto> getUserByUsername(String username) {
         List<UserDto> users = Arrays.asList(userClient.getOsuUser(username).getBody());
         setUserImgUrl(users);
-            addUser(userMapper.toEntity(users.get(0)));
+        addUser(users.get(0));
         return users;
     }
-    private List<UserDto> setUserImgUrl(List<UserDto> users){
+
+    private List<UserDto> setUserImgUrl(List<UserDto> users) {
         return users.stream().peek(userDto -> userDto.setImgUrl(userClient.getUserImage(userDto.getUser_id()))).collect(Collectors.toList());
     }
-    private void addUser(User user) {
-        if (!userRepo.existsByUsername(user.getUsername())) {
-            userRepo.save(user);
+
+    private void addUser(UserDto userDto) {
+        if (!userRepo.existsByUsername(userDto.getUsername())) {
+            userRepo.save(userMapper.toEntity(userDto));
         }
     }
+
     public List<User> getAll() {
         return userRepo.findAll();
     }

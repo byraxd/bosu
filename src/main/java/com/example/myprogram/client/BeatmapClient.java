@@ -15,7 +15,6 @@ public class BeatmapClient {
     private RestTemplate restTemplate;
 
     private static final String URL_BEATMAP = "https://osu.ppy.sh/api/get_beatmaps?k=2f76d6431424b6ad60a890da9e135e7e1d34d387&since=%s";
-    private static final String API_KEY = "2f76d6431424b6ad60a890da9e135e7e1d34d387";
 
     public ResponseEntity<BeatmapDto[]> getOsuBeatmap(String submitDate) {
         HttpHeaders headers = new HttpHeaders();
